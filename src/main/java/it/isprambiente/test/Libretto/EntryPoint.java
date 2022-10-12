@@ -2,6 +2,8 @@ package it.isprambiente.test.Libretto;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import it.isprambiente.test.Libretto.model.Libretto;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,12 +14,18 @@ public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
+    	// recupera il controller dalla classe loader
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
+    	Parent root = loader.load();
+        FXMLController controller = loader.getController(); // Riferimento alla classe Controller
+               
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         scene.getRoot().setStyle("-fx-font-family: 'serif'");
-
+        
+        Libretto model = new Libretto();     // Istanzio la classe Model
+        controller.setModel(model);          // dico al controlle quale è il modello 
+        
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();

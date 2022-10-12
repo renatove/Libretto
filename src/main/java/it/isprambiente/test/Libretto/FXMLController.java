@@ -6,6 +6,8 @@ package it.isprambiente.test.Libretto;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import it.isprambiente.test.Libretto.model.Libretto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -14,7 +16,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLController {
-
+	
+	private Libretto model;
+	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -41,6 +45,10 @@ public class FXMLController {
 
     }
 
+    public void setModel(Libretto model) {
+    	this.model = model;
+    }
+    
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert dpEsame != null : "fx:id=\"dpEsame\" was not injected: check your FXML file 'Scene.fxml'.";
